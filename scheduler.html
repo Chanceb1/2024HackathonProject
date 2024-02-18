@@ -47,7 +47,7 @@
         <div class="row align-items-center">
           <div class="col-3">
             <div class="col-3 text-align">
-              <a href="base.html" class="btn btn-secondary me-2">Home</a>
+              <a href="/" class="btn btn-secondary me-2">Home</a>
             </div>
           </div>
           <div class="col-6 d-flex justify-content-center">
@@ -62,7 +62,7 @@
             </a>
           </div>
           <div class="col-3 text-end">
-            <a href="login.html" class="btn btn-secondary login-button"
+            <a href="/loginPage" class="btn btn-secondary login-button"
               >Logout</a
             >
           </div>
@@ -70,7 +70,10 @@
       </div>
     </header>
 
-    <div class="row"></div>
+    <div class="row justify-content-center" style="margin: 2em 0;">
+        <button type="button" class="btn btn-secondary login-button" style="width: 200px; margin-right: 5em;">Select Counselor</button>
+        <button type="button" class="btn btn-secondary login-button" style="width: 200px;">Select Therapist</button>
+    </div>
 
     <div class="container-fluid px-0 px-sm-4 mx-auto">
       <div class="row justify-content-center mx-0">
@@ -79,8 +82,7 @@
             <form autocomplete="off">
               <div class="card-header">
                 <div
-                  class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1"
-                >
+                  class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1">
                   <input
                     type="text"
                     id="dp1"
@@ -169,6 +171,10 @@
               </div>
             </form>
           </div>
+
+            <div class="row justify-content-center">
+                <button type="button" class="btn btn-primary" style="width: 100px;">Book</button>
+            </div>
         </div>
       </div>
     </div>

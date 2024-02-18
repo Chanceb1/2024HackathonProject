@@ -19,7 +19,7 @@ app.use(express.static("public"));
 // });
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/base.html'))
+    res.sendFile(path.join(__dirname, '/index.html'))
 })
 
 app.get('/loginPage', function (req, res) {
