@@ -1,21 +1,21 @@
-const sendChatBtn = document.querySelector(".chat-input span");
+const sendChatButton = document.querySelector(".chat-input span");
 const chatInput = document.querySelector(".chat-input textarea");
 const Chatbox = document.querySelector(".chatbox");
 
 let userMessage;
 const API_KEY = "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"; // Enter API Key HERE
 
-const createChatLi = (message, className) => {
-  const chatLi = document.createElement("li");
-  chatLi.classList.add("chat", className);
-  let chaContent =
+const createChatList = (message, className) => {
+  const chatList = document.createElement("li");
+  chatList.classList.add("chat", className);
+  let chatContent =
     className === "outgoing"
       ? `<p>${message}</p>`
       : `<span>
       <img src="images/washington-state-cougars-1.svg" style="height: 32px; width: 32px; border-radius: 4px;">
     </span><p>${message}</p>`;
-  chatLi.innerHTML = chaContent;
-  return chatLi;
+  chatList.innerHTML = chatContent;
+  return chatList;
 };
 
 const generateResponse = (incomingChatLi) => {
@@ -55,16 +55,16 @@ const handleChat = () => {
 
   if (!userMessage) return;
 
-  Chatbox.appendChild(createChatLi(userMessage, "outgoing")); // Show message from the user
+  Chatbox.appendChild(createChatList(userMessage, "outgoing")); // Show message from the user
   chatInput.value = ""; // Erase a message
   Chatbox.scrollTo(0, Chatbox.scrollHeight); // Scroll
 
   setTimeout(() => {
-    const incomingChatLi = createChatLi("...", "incoming");
+    const incomingChatLi = createChatList("...", "incoming");
     Chatbox.appendChild(incomingChatLi);
     Chatbox.scrollTo(0, Chatbox.scrollHeight);
     generateResponse(incomingChatLi);
   }, 600);
 };
 
-sendChatBtn.addEventListener("click", handleChat);
+sendChatButton.addEventListener("click", handleChat);
