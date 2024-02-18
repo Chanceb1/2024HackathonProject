@@ -5,6 +5,10 @@ const Chatbox = document.querySelector(".chatbox");
 let userMessage;
 const API_KEY = "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"; // Enter API Key HERE
 
+let conversationHistory = [
+  {role: "system", content: "You are a counselor who help students have issues with mental health"}
+];
+
 const createChatList = (message, className) => {
   const chatList = document.createElement("li");
   chatList.classList.add("chat", className);
@@ -31,9 +35,7 @@ const generateResponse = (incomingChatLi) => {
     },
     body: JSON.stringify({
       model: "gpt-3.5-turbo",
-      messages: [{role:"system", content:"You are a counselor who help students have issues with mental health"},
-      { role: "user", content: userMessage },
-      {role: "assistant", content: userMessage},],
+      messages: conversationHistory,
     }),
   };
 
@@ -41,7 +43,9 @@ const generateResponse = (incomingChatLi) => {
   fetch(API_URL, requestOptions)
     .then((res) => res.json())
     .then((data) => {
-      messageElement.textContent = data.choices[0].message.content;
+      const responseMessage = data.choices[0].message.content;
+      messageElement.textContent = responseMessage;
+      conversationHistory.push({role: "assistant", content: responseMessage});
     })
     .catch((error) => {
       messageElement.textContent = "Fatal Error! Please try again later :)";
@@ -54,6 +58,8 @@ const handleChat = () => {
   // console.log(userMessage);
 
   if (!userMessage) return;
+
+  conversationHistory.push({role: "user", content: userMessage});
 
   Chatbox.appendChild(createChatList(userMessage, "outgoing")); // Show message from the user
   chatInput.value = ""; // Erase a message
