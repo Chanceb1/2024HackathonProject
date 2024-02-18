@@ -9,6 +9,8 @@ const app = express();
 const port = 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
+// app.use(express.static(path.join(__dirname, "client.js")));
+app.use(express.static("public"));
 
 // const redisClient = redis.createClient({
 //     host: 'redis-18758.c1.us-west-2-2.ec2.cloud.redislabs.com',
@@ -17,7 +19,15 @@ app.use(express.json())
 // });
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/main.html'))
+    res.sendFile(path.join(__dirname, '/base.html'))
+})
+
+app.get('/loginPage', function (req, res) {
+    res.sendFile(path.join(__dirname, '/login.html'))
+})
+
+app.get('/registerPage', function (req, res) {
+    res.sendFile(path.join(__dirname, '/register.html'))
 })
 
 app.post('/register', function (req, res) {
