@@ -6,7 +6,11 @@ let userMessage;
 const API_KEY = "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"; // Enter API Key HERE
 
 let conversationHistory = [
-  {role: "system", content: "You are a counselor who help students have issues with mental health"}
+  {
+    role: "system",
+    content:
+      "You are a counselor who help students have issues with mental health",
+  },
 ];
 
 const createChatList = (message, className) => {
@@ -45,7 +49,7 @@ const generateResponse = (incomingChatLi) => {
     .then((data) => {
       const responseMessage = data.choices[0].message.content;
       messageElement.textContent = responseMessage;
-      conversationHistory.push({role: "assistant", content: responseMessage});
+      conversationHistory.push({ role: "assistant", content: responseMessage });
     })
     .catch((error) => {
       messageElement.textContent = "Fatal Error! Please try again later :)";
@@ -59,7 +63,7 @@ const handleChat = () => {
 
   if (!userMessage) return;
 
-  conversationHistory.push({role: "user", content: userMessage});
+  conversationHistory.push({ role: "user", content: userMessage });
 
   Chatbox.appendChild(createChatList(userMessage, "outgoing")); // Show message from the user
   chatInput.value = ""; // Erase a message
