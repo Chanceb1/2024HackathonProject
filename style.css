@@ -1,0 +1,14 @@
+.cell {
+    border: 1px solid #BDBDBD;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.cell:hover {
+    border: 1px solid #3D5AFE;
+}
+
+.cell.select {
+    background-color: #3D5AFE;
+    color: #fff;
+}
