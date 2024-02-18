@@ -30,6 +30,10 @@ app.get('/registerPage', function (req, res) {
     res.sendFile(path.join(__dirname, '/register.html'))
 })
 
+app.get('/scheduler', function (req, res) {
+    res.sendFile(path.join(__dirname, '/scheduler.html'))
+})
+
 app.post('/register', function (req, res) {
     // Set a key-value pair in Redis
     // redisClient.set('example_key', 'Hello from Redis!', (error, result) => {
